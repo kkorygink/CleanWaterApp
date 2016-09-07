@@ -1,6 +1,0 @@
-<application>
-  <component name="Git.Application.Settings">
-    <option name="myPathToGit" value="https://github.gatech.edu/isingh34/cs2340.git" />
-    <option name="SSH_EXECUTABLE" value="IDEA_SSH" />
-  </component>
-</application>
