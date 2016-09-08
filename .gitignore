@@ -17,3 +17,7 @@ hs_err_pid*
 # We don't want IDEA specific files in our repo
 .idea
 *.iml
+
+# Neither do we want Gradle specific stuff
+build/*
+.gradle/*
