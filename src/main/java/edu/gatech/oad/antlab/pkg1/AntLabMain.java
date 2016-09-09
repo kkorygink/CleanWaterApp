@@ -83,6 +83,9 @@ public class AntLabMain {
         //and gburdell5 with your gt id
         Person5 p5 = new Person5("P5");
         toPrint += p5.toString("gburdell5");
+	
+	Person6 p6 = new Person6("Kirill Korygin");
+	toPrint += p6.toString("kkorygin3");
 
         System.out.println(toPrint);
 
