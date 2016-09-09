@@ -81,14 +81,15 @@ public class AntLabMain {
 
         //Person5 replace P4 with your name
         //and gburdell5 with your gt id
-<<<<<<< HEAD
-	
-	Person6 p6 = new Person6("Kirill Korygin");
-	toPrint += p6.toString("kkorygin3");
-=======
+
         Person5 p5 = new Person5("Dilip Shekhar");
         toPrint += p5.toString("dshehkar3");
->>>>>>> e4e94942cb0533a82c5cbaf7efb38b1014a1f2ba
+        
+	    Person6 p6 = new Person6("Kirill Korygin");
+	    toPrint += p6.toString("kkorygin3");
+
+        
+
 
         System.out.println(toPrint);
 
