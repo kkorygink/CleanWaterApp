@@ -9,10 +9,10 @@
 #*.ear
 
 # Vim swap files
-.*.sw*
+*.*.sw*
 
 # Temporary files (Emacs)
-.*~
+*.*~
 
 # Apple stuff
 .DS_STORE
@@ -21,7 +21,7 @@
 hs_err_pid*
 
 # We don't want IDEA specific files in our repo
-.idea
+*.idea
 *.iml
 IntelliLang.xml
 databaseSettings.xml
