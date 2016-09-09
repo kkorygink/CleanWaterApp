@@ -1,0 +1,9 @@
+<application>
+  <component name="FileTypeManager" version="16">
+    <extensionMap>
+      <mapping pattern="tryClubClasses" type="CLASS" />
+      <mapping pattern="jhnb" type="CLASS" />
+      <mapping pattern="test" type="CLASS" />
+    </extensionMap>
+  </component>
+</application>
