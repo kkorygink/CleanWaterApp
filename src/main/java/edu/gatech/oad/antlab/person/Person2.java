@@ -30,8 +30,16 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 2 put your implementation here
-	  return null;
+		char[] array = input.toCharArray();
+		String rotatedOutput = "";
+
+		for (int i = 2; i < input.length(); i++) {
+			rotatedOutput = rotatedOutput + array[i];
+		}
+
+		rotatedOutput = rotatedOutput + array[0] + array[1];
+
+	  return rotatedOutput;
 	}
 	/**
 	 * Return a string rep of this object

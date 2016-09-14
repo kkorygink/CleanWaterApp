@@ -9,14 +9,29 @@
 #*.ear
 
 # Vim swap files
-.*.sw*
+*.*.sw*
+
+# Temporary files (Emacs)
+*.*~
+
+# Apple stuff
+.DS_STORE
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
 # We don't want IDEA specific files in our repo
-.idea
+*.idea
 *.iml
+IntelliLang.xml
+databaseSettings.xml
+debugger.xml
+editor.xml
+file.template.settings.xml
+filetypes.xml
+other.xml
+scala.xml
+web-browsers.xml
 
 # Neither do we want Gradle specific stuff
 build/*

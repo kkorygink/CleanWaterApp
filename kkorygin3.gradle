@@ -1,3 +1,4 @@
+
 // Set a default task, so if I don't give a task, this (these) will be executed
 defaultTasks  'jar'
 
@@ -5,11 +6,11 @@ defaultTasks  'jar'
 apply plugin: 'java'
 
 // For the run task
-apply plugin: 'application'
+//apply plugin: 'application'
 
 // Set up some variables (properties)
 version = '1.0'
-mainClassName='edu.gatech.oad.antlab.pkg1.AntLabMain'
+//mainClassName='edu.gatech.oad.antlab.pkg1.AntLabMain'
 
 // Define the contents of the jar file
 jar {

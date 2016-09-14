@@ -65,24 +65,31 @@ public class AntLabMain {
                         + ant22.getMessage() + ant31.getMessage();
         //Person1 replace P1 with your name
         //and gburdell1 with your gt id
-        Person1 p1 = new Person1("P1");
-        toPrint += p1.toString("gburdell1");
+        Person1 p1 = new Person1("Matthew Lemons");
+        toPrint += p1.toString("mlemons7");
         //Person2 replace P2 with your name
         //and gburdell with your gt id
-        Person2 p2 = new Person2("P2");
-        toPrint += p2.toString("gburdell2");
+        Person2 p2 = new Person2("Zahra Farooq");
+        toPrint += p2.toString("zfarooq3");
         //Person3 replace P3 with your name
         //and gburdell3 with your gt id
-        Person3 p3 = new Person3("P3");
-        toPrint += p3.toString("gburdell3");
+        Person3 p3 = new Person3("Maxwell Bronstein");
+        toPrint += p3.toString("mbronstein3");
 
         Person4 p4 = new Person4("Ishbir Singh");
         toPrint += p4.toString("isingh34");
 
         //Person5 replace P4 with your name
         //and gburdell5 with your gt id
-        Person5 p5 = new Person5("P5");
-        toPrint += p5.toString("gburdell5");
+
+        Person5 p5 = new Person5("Dilip Shekhar");
+        toPrint += p5.toString("dshehkar3");
+        
+	    Person6 p6 = new Person6("Kirill Korygin");
+	    toPrint += p6.toString("kkorygin3");
+
+        
+
 
         System.out.println(toPrint);
 
