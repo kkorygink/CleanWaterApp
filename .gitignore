@@ -1,2 +1,5 @@
 # Compiled stuff
 out/*
+
+# Ignore files that change commonly
+.idea/workspace.xml
