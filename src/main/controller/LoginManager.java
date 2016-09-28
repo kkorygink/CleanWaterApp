@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Login managern which takes care of switching between the application, the welcome screen,
+ * Login manager which takes care of switching between the application, the welcome screen,
  * login screen and registration screens.
  */
 public class LoginManager {
@@ -59,10 +59,13 @@ public class LoginManager {
 
     public void showRegister() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/registration.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/registration.fxml"));
             primaryStage.setTitle("Water App - Register");
-            primaryStage.setScene(new Scene(root, 600, 500));
+            primaryStage.setScene(new Scene(loader.load(), 600, 500));
             primaryStage.show();
+
+            RegisterController controller = loader.getController();
+            controller.initManager(this);
 
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);

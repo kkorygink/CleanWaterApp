@@ -1,5 +1,7 @@
 package main.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,6 +12,8 @@ import main.model.UserType;
  * Created by random on 9/20/16.
  */
 public class RegisterController {
+
+
     @FXML
     private TextField username;
     @FXML
@@ -23,9 +27,9 @@ public class RegisterController {
     @FXML
     private PasswordField confirmPassword;
     @FXML
-    private Button registerButton;
+    Button registerButton;
     @FXML
-    private Button cancelButton1;
+    Button cancelButton;
 
     @FXML
     public void initialize() {
@@ -33,13 +37,23 @@ public class RegisterController {
     }
 
     public void initManager(final LoginManager loginManager) {
-        cancelButton1.setOnAction((ActionEvent event) -> {
+//        registerButton.setOnAction((ActionEvent event) -> {
+//            User user = authorize();
+//            if (user != null) {
+//                loginManager.authenticated(user);
+//            } else {
+//                new Alert(Alert.AlertType.ERROR, "Please complete all fields").show();
+//            }
+//        });
+        cancelButton.setOnAction((ActionEvent event) -> {
             loginManager.showWelcome();
         });
-
-        registerButton.setOnAction((ActionEvent event) -> {
-            loginManager.showLogin();
-        });
     }
-
+//
+//    private User authorize() {
+//        if (password.equals(confirmPassword)){
+//            return null;
+//        }
+//        return null;
+//    }
 }
