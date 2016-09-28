@@ -1,51 +1,68 @@
 package main.model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class User {
-    private String userID;
-    private String name;
-    private String password;
-    private String email;
-    private String address;
+
+    private UserType accountType;
+    private final StringProperty userID = new SimpleStringProperty();
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty password = new SimpleStringProperty();
+    private final StringProperty email = new SimpleStringProperty();
+    private final StringProperty address = new SimpleStringProperty();
 
     public User(String name, String userID, String password) {
-        this.name = name;
-        this.userID = userID;
-        this.password = password;
+        this.name.set(name);
+        this.userID.set(userID);
+        this.password.set(password);
+    }
+
+    public User(String name, String userID, String password, UserType accountType) {
+        this.name.set(name);
+        this.userID.set(userID);
+        this.password.set(password);
+        this.accountType = accountType;
     }
 
     public String getUserID() {
-        return userID;
+        return userID.get();
     }
+    public void setUserID(String userid) { userID.set(userid); }
+
 
     public String getName() {
-        return name;
+        return name.get();
     }
-
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getPassword() {
-        return password;
+        return password.get();
     }
-
     public void setPassword(String password) {
-        this.password = password;
+        this.password.set(password);
     }
 
     public String getEmail() {
-        return email;
+        return email.get();
     }
-
     public void setEmail(String email) {
-        this.email = email;
+        this.email.set(email);
     }
 
     public String getAddress() {
-        return address;
+        return address.get();
+    }
+    public void setAddress(String address) {
+        this.address.set(address);
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public UserType getAccountType() {
+        return accountType;
+    }
+    public void setAccountType(UserType standing) {
+        this.accountType = accountType;
     }
 }

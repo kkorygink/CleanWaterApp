@@ -6,8 +6,9 @@ package main.model;
 public enum UserType {
     USER("User"), WORKER("Worker"), MANAGER("Manager"), ADMIN("Admin");
 
-    private final String name;
-    UserType(String name) {
+    private String name;
+
+    private UserType(String name) {
         this.name = name;
     }
 
