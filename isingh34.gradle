@@ -1,0 +1,29 @@
+// Set a default task, so if I don't give a task, this (these) will be executed
+defaultTasks  'jar'
+
+// Import a bunch of java related tasks like compileJava, compileJavaTest, clean, javadoc, jar
+apply plugin: 'java'
+
+// For the run task
+apply plugin: 'application'
+
+// Set up some variables (properties)
+version = '1.0'
+mainClassName='edu.gatech.oad.antlab.pkg1.AntLabMain'
+
+// Define the contents of the jar file
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'CS 2340 Group Project', 'Implementation-Version': version , 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain', 'Class-path': '../../lib/resources.jar'
+    }
+}
+
+// Set up a location of repositories so that any needed library dependencies can be downloaded
+repositories {
+    mavenCentral()
+}
+
+// Add dependencies.
+dependencies {
+    compile files('lib/resources.jar')
+}
