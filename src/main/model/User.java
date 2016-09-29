@@ -2,8 +2,10 @@ package main.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import java.io.Serializable;
 
-public class User {
+
+public class User implements Serializable {
 
     private UserType accountType;
     private final StringProperty userID = new SimpleStringProperty();
@@ -64,5 +66,18 @@ public class User {
     }
     public void setAccountType(UserType standing) {
         this.accountType = accountType;
+    }
+
+    public String toString() {
+        return new StringBuffer(" userID : ")
+                .append(this.userID)
+                .append(" name : ")
+                .append(this.name)
+                .append(" password : ")
+                .append(this.password)
+                .append(" email : ")
+                .append(this.email)
+                .append(" accountType : ")
+                .append(this.accountType).toString();
     }
 }
