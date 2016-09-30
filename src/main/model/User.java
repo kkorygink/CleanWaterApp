@@ -2,21 +2,34 @@ package main.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+<<<<<<< HEAD
+=======
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+>>>>>>> 16a555eada9771146268030c60a016d38f12ddf1
 
 
 public class User {
 
     private UserType accountType;
-    private final StringProperty userID = new SimpleStringProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty password = new SimpleStringProperty();
-    private final StringProperty email = new SimpleStringProperty();
-    private final StringProperty address = new SimpleStringProperty();
+    private final transient StringProperty userID = new SimpleStringProperty();
+    private final transient StringProperty name = new SimpleStringProperty();
+    private final transient StringProperty password = new SimpleStringProperty();
+    private final transient StringProperty email = new SimpleStringProperty();
+    private final transient StringProperty address = new SimpleStringProperty();
+    private final ArrayList<String> serial = new ArrayList();
 
     public User(String name, String userID, String password) {
         this.name.set(name);
         this.userID.set(userID);
         this.password.set(password);
+        serial.add(name.toString());
+        serial.add(userID.toString());
+        serial.add(password.toString());
     }
 
     public User(String name, String userID, String password, UserType accountType) {
@@ -24,6 +37,10 @@ public class User {
         this.userID.set(userID);
         this.password.set(password);
         this.accountType = accountType;
+        serial.add(name.toString());
+        serial.add(userID.toString());
+        serial.add(password.toString());
+        serial.add(accountType.toString());
     }
 
     public String getUserID() {
@@ -36,7 +53,9 @@ public class User {
         return name.get();
     }
     public void setName(String name) {
+        this.serial.remove(name.toString());
         this.name.set(name);
+        this.serial.add(name.toString());
     }
 
     public String getPassword() {
@@ -50,7 +69,9 @@ public class User {
         return email.get();
     }
     public void setEmail(String email) {
+        this.serial.remove(email.toString());
         this.email.set(email);
+        this.serial.add(email.toString());
     }
 
     public String getAddress() {
@@ -64,7 +85,8 @@ public class User {
         return accountType;
     }
     public void setAccountType(UserType standing) {
-        this.accountType = accountType;
+        this.accountType = standing;
+        this.serial.add(accountType.toString());
     }
 
     public String toString() {
@@ -79,4 +101,9 @@ public class User {
                 .append(" accountType : ")
                 .append(this.accountType).toString();
     }
+    public ArrayList<String> getSerial() {
+        return serial;
+    }
+
+
 }
