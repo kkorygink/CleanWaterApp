@@ -68,7 +68,7 @@
     </filter>
   </component>
   <component name="JavaFxSettings">
-    <option name="pathToSceneBuilder" value="$USER_HOME$/Documents/Fall 2016/Objects and Design/cs2340/src/main/view/profile.fxml" />
-    <option name="myPathToSceneBuilder" value="$USER_HOME$/Documents/Fall 2016/Objects and Design/cs2340/src/main/view/profile.fxml" />
+    <option name="pathToSceneBuilder" value="/Applications/SceneBuilder.app" />
+    <option name="myPathToSceneBuilder" value="/Applications/SceneBuilder.app" />
   </component>
 </application>
