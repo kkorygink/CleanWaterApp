@@ -9,6 +9,8 @@ import main.model.User;
 import main.model.UserType;
 import javafx.scene.control.Alert.AlertType;
 import java.io.*;
+import java.util.ArrayList;
+
 
 /**
  * Created by random on 9/20/16.
@@ -39,9 +41,11 @@ public class RegisterController {
         accountType.getItems().setAll(UserType.values());
 
     }
+    File fileName = new File("./src/main/Data/user.ser");
 
     public void initManager(final LoginManager loginManager) {
         registerButton.setOnAction((ActionEvent event) -> {
+
 
             if (username.getText() == null || name.getText() == null || email.getText() == null
                     || password.getText() == null || confirmPassword.getText() == null ||
@@ -75,7 +79,7 @@ public class RegisterController {
 
 
                 try {
-                    FileOutputStream fileOut = new FileOutputStream("../view/user.txt");
+                    FileOutputStream fileOut = new FileOutputStream(fileName, true);
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
                     out.writeObject(user);
                     out.close();
@@ -106,38 +110,38 @@ public class RegisterController {
     }
 
     public boolean IDTaken() {
-//        User e = null;
-//
-//        try {
-//            FileInputStream fileIn = new FileInputStream("../view/user.txt");
-//            ObjectInputStream in = new ObjectInputStream(fileIn);
-//            while (e != null) {
-//                e = (User) in.readObject();
-//                if (e.getUserID().equals(username.getText())){
-//                    in.close();
-//                    fileIn.close();
-//                    return true;
-//                }
-//            }
-//            in.close();
-//            fileIn.close();
-//            return false;
-//        } catch (IOException i) {
-//            i.printStackTrace();
-//            return true;
-//        } catch (ClassNotFoundException c) {
-//            System.out.println("Employee class not found");
-//            c.printStackTrace();
-//            return true;
-//        }
-        return false;
+        User e = null;
+
+        try {
+            FileInputStream fileIn = new FileInputStream(fileName);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+
+           while (in.available() > 0) {
+               e = (User) in.readObject();
+                if (e.getSerial().contains(username.toString())){
+                    in.close();
+                    fileIn.close();
+                    return true;
+                }
+           }
+            in.close();
+            fileIn.close();
+            return false;
+        } catch (IOException i) {
+            i.printStackTrace();
+            return true;
+        } catch (ClassNotFoundException c) {
+            System.out.println("User class not found");
+            c.printStackTrace();
+            return true;
+        }
     }
 
     public boolean emailTaken() {
 //        User e = null;
 //
 //        try {
-//            FileInputStream fileIn = new FileInputStream("../view/user.txt");
+//            FileInputStream fileIn = new FileInputStream(fileName);
 //            ObjectInputStream in = new ObjectInputStream(fileIn);
 //            while (e != null) {
 //                e = (User) in.readObject();
@@ -158,8 +162,11 @@ public class RegisterController {
 //            c.printStackTrace();
 //            return true;
 //        }
-//    }
         return false;
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }
+
 }
