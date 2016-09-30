@@ -1,14 +1,12 @@
 package main.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import main.model.User;
 import main.model.UserType;
 import javafx.scene.control.Alert.AlertType;
-import java.io.*;
+import main.model.allUsers;
+import main.model.User;
 
 /**
  * Created by random on 9/20/16.
@@ -33,71 +31,42 @@ public class RegisterController {
     @FXML
     Button cancelButton;
 
-
     @FXML
     public void initialize() {
         accountType.getItems().setAll(UserType.values());
 
     }
 
-    public void initManager(final LoginManager loginManager) {
+    public void initManager(final LoginManager loginManager){
         registerButton.setOnAction((ActionEvent event) -> {
 
             if (username.getText() == null || name.getText() == null || email.getText() == null
                     || password.getText() == null || confirmPassword.getText() == null ||
                     accountType.getSelectionModel().isEmpty()) {
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("All fields must be filled in");
-
-                alert.showAndWait();
+                showError("All fields must be filled in");
                 return;
             }
 
             if (!password.getText().equals(confirmPassword.getText())) {
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Passwords don't match");
-
-                alert.showAndWait();
+                showError("The passwords don't match");
                 return;
             }
 
+            if (!IDTaken() && !emailTaken()) {
 
-            if (emailTaken() == false && IDTaken() == false) {
-                User user = new User(name.getText(), username.getText(), password.getText());
-                user.setEmail(email.getText());
-                user.setAccountType(accountType.getSelectionModel().getSelectedItem());
-
-
-                try {
-                    FileOutputStream fileOut = new FileOutputStream("../view/user.txt");
-                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                    out.writeObject(user);
-                    out.close();
-                    fileOut.close();
-                    loginManager.showMain(user);
-
-                } catch (IOException i) {
-                    i.printStackTrace();
-                }
-
-
+                User newUser = new User(name.getText(), username.getText(), password.getText());
+                newUser.setEmail(email.getText());
+                newUser.setAccountType(accountType.getSelectionModel().getSelectedItem());
+                allUsers.addUser(newUser);
+                loginManager.showMain(newUser);
 
             } else {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Email or Username already in use");
-
-                alert.showAndWait();
+                showError("The username or email is already taken");
                 return;
-            }
 
+            }
 
         });
         cancelButton.setOnAction((ActionEvent event) -> {
@@ -105,61 +74,34 @@ public class RegisterController {
         });
     }
 
-    public boolean IDTaken() {
-//        User e = null;
-//
-//        try {
-//            FileInputStream fileIn = new FileInputStream("../view/user.txt");
-//            ObjectInputStream in = new ObjectInputStream(fileIn);
-//            while (e != null) {
-//                e = (User) in.readObject();
-//                if (e.getUserID().equals(username.getText())){
-//                    in.close();
-//                    fileIn.close();
-//                    return true;
-//                }
-//            }
-//            in.close();
-//            fileIn.close();
-//            return false;
-//        } catch (IOException i) {
-//            i.printStackTrace();
-//            return true;
-//        } catch (ClassNotFoundException c) {
-//            System.out.println("Employee class not found");
-//            c.printStackTrace();
-//            return true;
-//        }
+    private boolean IDTaken() {
+        User [] x = allUsers.getUsers();
+        for (int i = 0; i < allUsers.getSize(); i++) {
+            if (x[i].getUserID().equals(username.getText())) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public boolean emailTaken() {
-//        User e = null;
-//
-//        try {
-//            FileInputStream fileIn = new FileInputStream("../view/user.txt");
-//            ObjectInputStream in = new ObjectInputStream(fileIn);
-//            while (e != null) {
-//                e = (User) in.readObject();
-//                if (e.getEmail().equals(email.getText())){
-//                    in.close();
-//                    fileIn.close();
-//                    return true;
-//                }
-//            }
-//            in.close();
-//            fileIn.close();
-//            return false;
-//        } catch (IOException i) {
-//            i.printStackTrace();
-//            return true;
-//        } catch (ClassNotFoundException c) {
-//            System.out.println("Employee class not found");
-//            c.printStackTrace();
-//            return true;
-//        }
-//    }
+    private boolean emailTaken() {
+        User [] x = allUsers.getUsers();
+        for (int i = 0; i < allUsers.getSize(); i++) {
+            if (x[i].getEmail().equals(email.getText())) {
+                return true;
+            }
+        }
         return false;
 
     }
+
+    private void showError(String x) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(x);
+
+        alert.showAndWait();
+    }
+
 }

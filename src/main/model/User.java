@@ -2,10 +2,9 @@ package main.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import java.io.Serializable;
 
 
-public class User implements Serializable {
+public class User {
 
     private UserType accountType;
     private final StringProperty userID = new SimpleStringProperty();
