@@ -1,16 +1,18 @@
 package main.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import main.model.User;
 import main.model.UserType;
 import javafx.scene.control.Alert.AlertType;
+<<<<<<< HEAD
+import main.model.allUsers;
+import main.model.User;
+=======
 import java.io.*;
 import java.util.ArrayList;
 
+>>>>>>> 16a555eada9771146268030c60a016d38f12ddf1
 
 /**
  * Created by random on 9/20/16.
@@ -35,7 +37,6 @@ public class RegisterController {
     @FXML
     Button cancelButton;
 
-
     @FXML
     public void initialize() {
         accountType.getItems().setAll(UserType.values());
@@ -43,7 +44,7 @@ public class RegisterController {
     }
     File fileName = new File("./src/main/Data/user.ser");
 
-    public void initManager(final LoginManager loginManager) {
+    public void initManager(final LoginManager loginManager){
         registerButton.setOnAction((ActionEvent event) -> {
 
 
@@ -51,27 +52,25 @@ public class RegisterController {
                     || password.getText() == null || confirmPassword.getText() == null ||
                     accountType.getSelectionModel().isEmpty()) {
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("All fields must be filled in");
-
-                alert.showAndWait();
+                showError("All fields must be filled in");
                 return;
             }
 
             if (!password.getText().equals(confirmPassword.getText())) {
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Passwords don't match");
-
-                alert.showAndWait();
+                showError("The passwords don't match");
                 return;
             }
 
+            if (!IDTaken() && !emailTaken()) {
 
+<<<<<<< HEAD
+                User newUser = new User(name.getText(), username.getText(), password.getText());
+                newUser.setEmail(email.getText());
+                newUser.setAccountType(accountType.getSelectionModel().getSelectedItem());
+                allUsers.addUser(newUser);
+                loginManager.showMain(newUser);
+=======
             if (emailTaken() == false && IDTaken() == false) {
                 User user = new User(name.getText(), username.getText(), password.getText());
                 user.setEmail(email.getText());
@@ -91,17 +90,13 @@ public class RegisterController {
                 }
 
 
+>>>>>>> 16a555eada9771146268030c60a016d38f12ddf1
 
             } else {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Email or Username already in use");
-
-                alert.showAndWait();
+                showError("The username or email is already taken");
                 return;
-            }
 
+            }
 
         });
         cancelButton.setOnAction((ActionEvent event) -> {
@@ -109,6 +104,25 @@ public class RegisterController {
         });
     }
 
+<<<<<<< HEAD
+    private boolean IDTaken() {
+        User [] x = allUsers.getUsers();
+        for (int i = 0; i < allUsers.getSize(); i++) {
+            if (x[i].getUserID().equals(username.getText())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean emailTaken() {
+        User [] x = allUsers.getUsers();
+        for (int i = 0; i < allUsers.getSize(); i++) {
+            if (x[i].getEmail().equals(email.getText())) {
+                return true;
+            }
+        }
+=======
     public boolean IDTaken() {
         User e = null;
 
@@ -162,6 +176,7 @@ public class RegisterController {
 //            c.printStackTrace();
 //            return true;
 //        }
+>>>>>>> 16a555eada9771146268030c60a016d38f12ddf1
         return false;
     }
 
@@ -169,4 +184,17 @@ public class RegisterController {
 
     }
 
+<<<<<<< HEAD
+    private void showError(String x) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(x);
+
+        alert.showAndWait();
+    }
+
 }
+=======
+}
+>>>>>>> 16a555eada9771146268030c60a016d38f12ddf1

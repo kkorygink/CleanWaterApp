@@ -2,15 +2,18 @@ package main.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+<<<<<<< HEAD
+=======
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+>>>>>>> 16a555eada9771146268030c60a016d38f12ddf1
 
 
-public class User implements Serializable {
+public class User {
 
     private UserType accountType;
     private final transient StringProperty userID = new SimpleStringProperty();
