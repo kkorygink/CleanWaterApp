@@ -46,13 +46,16 @@ public class ProfileController {
 
     public void initManager(final LoginManager loginManager) {
         saveButton.setOnAction((ActionEvent event) -> {
-            if(name.getText() != null || email.getText() != null ) {
+            if(name.getText() != null || email.getText() != null || !emailTaken() ) {
                 user.setEmail(email.getText());
                 user.setName(name.getText());
                 user.setAddress(address.getText());
 
             }
-            System.out.println(password.getText());
+            if (emailTaken()) {
+                showError("Email is already in use");
+                return;
+            }
             if (!password.getText().equals(confirmPassword.getText()) || password.getText().replaceAll("\\s+","").isEmpty()) {
                 showError("The passwords don't match, please input a valid password");
                 return;
