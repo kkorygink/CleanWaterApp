@@ -1,84 +1,68 @@
 package main.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-<<<<<<< HEAD
-=======
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
->>>>>>> 16a555eada9771146268030c60a016d38f12ddf1
-
 
 public class User {
 
     private UserType accountType;
-    private final transient StringProperty userID = new SimpleStringProperty();
-    private final transient StringProperty name = new SimpleStringProperty();
-    private final transient StringProperty password = new SimpleStringProperty();
-    private final transient StringProperty email = new SimpleStringProperty();
-    private final transient StringProperty address = new SimpleStringProperty();
-    private final ArrayList<String> serial = new ArrayList();
+
+    private String userID;
+    private String name;
+    private String password;
+    private String email;
+    private String address;
+
 
     public User(String name, String userID, String password) {
-        this.name.set(name);
-        this.userID.set(userID);
-        this.password.set(password);
-        serial.add(name.toString());
-        serial.add(userID.toString());
-        serial.add(password.toString());
+        this.name = name;
+        this.userID = userID;
+        this.password = password;
+    }
+    public User(String userID, String password) {
+        this.userID = userID;
+        this.password = password;
     }
 
     public User(String name, String userID, String password, UserType accountType) {
-        this.name.set(name);
-        this.userID.set(userID);
-        this.password.set(password);
+        this.name = name;
+        this.userID = userID;
+        this.password = password;
         this.accountType = accountType;
-        serial.add(name.toString());
-        serial.add(userID.toString());
-        serial.add(password.toString());
-        serial.add(accountType.toString());
+
     }
 
     public String getUserID() {
-        return userID.get();
+        return userID;
     }
-    public void setUserID(String userid) { userID.set(userid); }
-
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public String getName() {
-        return name.get();
+        return name;
     }
     public void setName(String name) {
-        this.serial.remove(name.toString());
-        this.name.set(name);
-        this.serial.add(name.toString());
+        this.name = name;
     }
 
     public String getPassword() {
-        return password.get();
+        return password;
     }
     public void setPassword(String password) {
-        this.password.set(password);
+        this.password = password;
     }
 
     public String getEmail() {
-        return email.get();
+        return email;
     }
     public void setEmail(String email) {
-        this.serial.remove(email.toString());
-        this.email.set(email);
-        this.serial.add(email.toString());
+        this.email = email;
     }
 
     public String getAddress() {
-        return address.get();
+        return address;
     }
     public void setAddress(String address) {
-        this.address.set(address);
+        this.address = address;
     }
 
     public UserType getAccountType() {
@@ -86,23 +70,19 @@ public class User {
     }
     public void setAccountType(UserType standing) {
         this.accountType = standing;
-        this.serial.add(accountType.toString());
     }
 
     public String toString() {
-        return new StringBuffer(" userID : ")
+        return new StringBuffer(" userID: ")
                 .append(this.userID)
-                .append(" name : ")
+                .append(" name: ")
                 .append(this.name)
-                .append(" password : ")
+                .append(" password: ")
                 .append(this.password)
-                .append(" email : ")
+                .append(" email: ")
                 .append(this.email)
-                .append(" accountType : ")
+                .append(" accountType: ")
                 .append(this.accountType).toString();
-    }
-    public ArrayList<String> getSerial() {
-        return serial;
     }
 
 

@@ -86,4 +86,19 @@ public class LoginManager {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void showProfile(User user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/profile.fxml"));
+            primaryStage.setTitle("Water App - Profile");
+            primaryStage.setScene(new Scene(loader.load(), 500, 500));
+            primaryStage.show();
+
+            ProfileController controller = loader.getController();
+            controller.initUser(user);
+            controller.initManager(this);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
