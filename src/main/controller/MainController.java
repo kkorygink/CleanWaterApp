@@ -18,12 +18,19 @@ public class MainController {
     @FXML
     Button logoutButton;
 
+    @FXML
+    Button profileButton;
+
     public void initUser(User user) {
         this.user = user;
         nameText.setText(user.getName());
     }
 
     public void initManager(final LoginManager loginManager) {
+        profileButton.setOnAction((ActionEvent event) -> {
+            loginManager.showProfile(user);
+        });
+
         logoutButton.setOnAction((ActionEvent event) -> {
             loginManager.logout();
         });
