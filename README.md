@@ -1,5 +1,5 @@
 # CleanWaterApp
-CS 2340 Projects ; NASA challenge
+CS 2340 Projects ; NASA challenge - [IN PROGRESS]
 
 This app is loosely based on the NASA challenge to map out drinking water resources. It was designed specifically with
 the idea that many in developing countries could put the application to use by safely locating good sources of water that
