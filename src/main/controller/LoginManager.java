@@ -15,20 +15,38 @@ import java.util.logging.Logger;
  * login screen and registration screens.
  */
 public class LoginManager {
+
+    /**
+     * The main stage for the LoginManager
+     */
     private Stage primaryStage;
 
+    /**
+     * Creates the log in manager
+     * @param primaryStage The stage the log in manager will be built on
+     */
     public LoginManager(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
+    /**
+     * Logs the user out by returning them to the welcome screen
+     */
     public void logout() {
         showWelcome();
     }
 
+    /**
+     * Logs the user in by showing them the main window of the application
+     * @param user The user
+     */
     public void authenticated(User user) {
         showMain(user);
     }
 
+    /**
+     * Shows the welcome screen
+     */
     public void showWelcome() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/welcome.fxml"));
@@ -43,6 +61,9 @@ public class LoginManager {
         }
     }
 
+    /**
+     * Shows the login screen
+     */
     public void showLogin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login.fxml"));
@@ -57,6 +78,9 @@ public class LoginManager {
         }
     }
 
+    /**
+     * Shows the registration screen
+     */
     public void showRegister() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/registration.fxml"));
@@ -72,6 +96,10 @@ public class LoginManager {
         }
     }
 
+    /**
+     * Shows the main application for a user
+     * @param user The user
+     */
     public void showMain(User user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/main.fxml"));
@@ -87,6 +115,10 @@ public class LoginManager {
         }
     }
 
+    /**
+     * Shows the welcome screen for a user
+     * @param user The user
+     */
     public void showProfile(User user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/profile.fxml"));

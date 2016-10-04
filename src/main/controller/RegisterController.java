@@ -11,35 +11,76 @@ import java.io.*;
 
 
 /**
- * Created by random on 9/20/16.
+ * The controller for user registration
  */
 public class RegisterController {
 
-
+    /**
+     * User's desired username
+     */
     @FXML
     private TextField username;
+
+    /**
+     * User's name
+     */
     @FXML
     private TextField name;
+
+    /**
+     * User's email
+     */
     @FXML
     private TextField email;
+
+    /**
+     * User's password
+     */
     @FXML
     private PasswordField password;
+
+    /**
+     * Type of account (user, worker, admin, etc.)
+     */
     @FXML
     private ComboBox<UserType> accountType;
+
+    /**
+     * Confirmation of the user's password
+     */
     @FXML
     private PasswordField confirmPassword;
+
+    /**
+     * Completes user registration
+     */
     @FXML
     Button registerButton;
+
+    /**
+     * Cancels user registration
+     */
     @FXML
     Button cancelButton;
 
+    /**
+     * Initializes the UI components
+     */
     @FXML
     public void initialize() {
         accountType.getItems().setAll(UserType.values());
 
     }
+
+    /**
+     * The file containing all the users' data
+     */
     File fileName = new File("./src/main/Data/user.ser");
 
+    /**
+     * Initializes the login manager and attempt to register the user
+     * @param loginManager The login manager
+     */
     public void initManager(final LoginManager loginManager) {
         registerButton.setOnAction((ActionEvent event) -> {
 
@@ -78,9 +119,10 @@ public class RegisterController {
         });
     }
 
-
-
-
+    /**
+     * Checks if the ID is taken
+     * @return true if it's taken
+     */
     private boolean IDTaken() {
         User [] x = allUsers.getUsers();
         for (int i = 0; i < allUsers.getSize(); i++) {
@@ -91,6 +133,10 @@ public class RegisterController {
         return false;
     }
 
+    /**
+     * Checks if the Email is taken
+     * @return true if it's taken
+     */
     private boolean emailTaken() {
         User[] x = allUsers.getUsers();
         for (int i = 0; i < allUsers.getSize(); i++) {
@@ -101,6 +147,10 @@ public class RegisterController {
         return false;
     }
 
+    /**
+     * Shows the user an error
+     * @param x The string to show the user
+     */
     private void showError(String x) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Error");
@@ -111,4 +161,3 @@ public class RegisterController {
     }
 
 }
-

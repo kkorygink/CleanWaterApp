@@ -1,10 +1,28 @@
 package main.model;
 
 /**
- * Created by random on 9/20/16.
+ * User types (User, Worker, Admin, etc.)
  */
 public enum UserType {
-    USER("User"), WORKER("Worker"), MANAGER("Manager"), ADMIN("Admin");
+    /**
+     * User
+     */
+    USER("User"),
+
+    /**
+     * Worker
+     */
+    WORKER("Worker"),
+
+    /**
+     * Manager
+     */
+    MANAGER("Manager"),
+
+    /**
+     * Admin
+     */
+    ADMIN("Admin");
 
     private String name;
 

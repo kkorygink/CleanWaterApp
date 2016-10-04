@@ -8,30 +8,73 @@ import main.model.User;
 import main.model.allUsers;
 
 /**
- * Created by random on 9/20/16.
+ * The controller for user profiles
  */
 public class ProfileController {
+
+    /**
+     * The username
+     */
     @FXML
     Text usernameText;
+
+    /**
+     * The type of account (user, worker, admin, etc)
+     */
     @FXML
     Text accountTypeText;
+
+    /**
+     * The user's name
+     */
     @FXML
     private TextField name;
+
+    /**
+     * The user's email
+     */
     @FXML
     private TextField email;
+
+    /**
+     * The user's address
+     */
     @FXML
     private TextField address;
+
+    /**
+     * The user's password
+     */
     @FXML
     private PasswordField password;
+
+    /**
+     * The user's password confirmation
+     */
     @FXML
     private PasswordField confirmPassword;
+
+    /**
+     * Save's the user's profile
+     */
     @FXML
     Button saveButton;
+
+    /**
+     * Cancels editing the user's profile
+     */
     @FXML
     Button cancelButton;
 
+    /**
+     * The user
+     */
     private User user;
 
+    /**
+     * Initializes the user's data into the controller
+     * @param user The user
+     */
     public void initUser(User user) {
         this.user = user;
         usernameText.setText(user.getUserID());
@@ -44,6 +87,11 @@ public class ProfileController {
 
     }
 
+    /**
+     * Initializes the LoginManager and verifies that the user's
+     * password is correct.
+     * @param loginManager
+     */
     public void initManager(final LoginManager loginManager) {
         saveButton.setOnAction((ActionEvent event) -> {
             if(name.getText() != null || email.getText() != null || !emailTaken() ) {
@@ -69,6 +117,10 @@ public class ProfileController {
         });
     }
 
+    /**
+     * Determines if the email is taken
+     * @return true if the email is taken
+     */
     private boolean emailTaken() {
         User[] x = allUsers.getUsers();
         if(!user.getEmail().equals(email.getText())) {
@@ -84,6 +136,11 @@ public class ProfileController {
 
         return false;
     }
+
+    /**
+     * Displays an error to the user
+     * @param x The string to display to the user
+     */
     private void showError(String x) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error");
@@ -94,4 +151,3 @@ public class ProfileController {
     }
 
 }
-

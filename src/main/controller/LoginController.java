@@ -9,21 +9,47 @@ import javafx.scene.control.TextField;
 import main.model.User;
 import main.model.allUsers;
 
-
+/**
+ * The controller for logins
+ */
 public class LoginController {
+
+    /**
+     * Holds the user's name
+     */
     @FXML
     private TextField user;
+
+    /**
+     * Holds the user's password
+     */
     @FXML
     private PasswordField password;
+
+    /**
+     * Logs the user in
+     */
     @FXML
     private Button loginButton;
+
+    /**
+     * Cancels the log-in form
+     */
     @FXML
     private Button cancelButton;
 
+    /**
+     * Run on initialization
+     */
     @FXML
     public void initialize() {
     }
 
+    /**
+     * Authorizes a user with the login manager. Fails
+     * with an alert if the user cannot be authenticated.
+     * @param loginManager The LoginManager
+     */
     public void initManager(final LoginManager loginManager) {
         loginButton.setOnAction((ActionEvent event) -> {
             User user1 = authorize();
@@ -40,14 +66,11 @@ public class LoginController {
     }
 
     /**
-     * Check authorization credentials.
-     * <p>
-     * If accepted, return a sessionID for the authorized session
-     * otherwise, return null.
+     * Check authorization credentials and return an authorized user
+     * @return The authorized user. Returns null upon failure.
      */
     private User authorize() {
-        for (User i : allUsers.getUsers()
-                ) {
+        for (User i : allUsers.getUsers()) {
             if (user.getText().equals(i.getUserID()) && password.getText().equals(i.getPassword())) {
                 return i;
             } else {
@@ -57,5 +80,3 @@ public class LoginController {
         return null;
     }
 }
-
-
