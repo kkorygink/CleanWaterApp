@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import main.model.User;
+import main.model.allUsers;
 
 
 public class LoginController {
@@ -25,9 +26,9 @@ public class LoginController {
 
     public void initManager(final LoginManager loginManager) {
         loginButton.setOnAction((ActionEvent event) -> {
-            User user = authorize();
-            if (user != null) {
-                loginManager.authenticated(user);
+            User user1 = authorize();
+            if (user1 != null) {
+                loginManager.authenticated(user1);
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid username and password").show();
             }
@@ -45,8 +46,16 @@ public class LoginController {
      * otherwise, return null.
      */
     private User authorize() {
-        return "user".equals(user.getText()) && "pass".equals(password.getText())
-                ? new User("Test User", "user", "pass")
-                : null;
+        for (User i : allUsers.getUsers()
+                ) {
+            if (user.getText().equals(i.getUserID()) && password.getText().equals(i.getPassword())) {
+                return i;
+            } else {
+                return null;
+            }
+        }
+        return null;
     }
 }
+
+

@@ -71,11 +71,17 @@ public class ProfileController {
 
     private boolean emailTaken() {
         User[] x = allUsers.getUsers();
-        for (int i = 0; i < allUsers.getSize(); i++) {
-            if (x[i].getEmail().equals(email.getText())) {
-                return true;
+        if(!user.getEmail().equals(email.getText())) {
+            for (int i = 0; i < allUsers.getSize(); i++) {
+                if (x[i].getEmail().equals(email.getText())) {
+                    return true;
+                }
             }
         }
+        else {
+            return false;
+        }
+
         return false;
     }
     private void showError(String x) {
