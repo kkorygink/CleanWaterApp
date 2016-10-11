@@ -1,4 +1,4 @@
-package main.model;
+package model;
 
 /**
  * This class is used to implement the RegisterController
@@ -25,7 +25,7 @@ public class allUsers {
 
     /**
      * Adds a user
-     * @param The user to add
+     * @param user The user to add
      */
     public static void addUser(User user){
         x[size] = user;

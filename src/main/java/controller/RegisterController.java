@@ -1,12 +1,12 @@
-package main.controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import main.model.UserType;
+import model.UserType;
 import javafx.scene.control.Alert.AlertType;
-import main.model.allUsers;
-import main.model.User;
+import model.allUsers;
+import model.User;
 import java.io.*;
 
 

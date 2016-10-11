@@ -1,10 +1,10 @@
-package main.controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-import main.model.User;
+import model.User;
 
 /**
  * The main application controller

@@ -1,8 +1,6 @@
-package main;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main.controller.LoginManager;
+import controller.LoginManager;
 import java.io.*;
 
 

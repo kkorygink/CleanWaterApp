@@ -1,10 +1,10 @@
-package main.controller;
+package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.model.User;
+import model.User;
 
 import java.io.IOException;
 import java.util.logging.Level;

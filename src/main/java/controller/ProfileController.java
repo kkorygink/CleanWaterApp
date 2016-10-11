@@ -1,11 +1,11 @@
-package main.controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import main.model.User;
-import main.model.allUsers;
+import model.User;
+import model.allUsers;
 
 /**
  * The controller for user profiles
@@ -90,7 +90,7 @@ public class ProfileController {
     /**
      * Initializes the LoginManager and verifies that the user's
      * password is correct.
-     * @param loginManager
+     * @param loginManager Manages the login
      */
     public void initManager(final LoginManager loginManager) {
         saveButton.setOnAction((ActionEvent event) -> {

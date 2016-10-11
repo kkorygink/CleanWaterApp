@@ -1,4 +1,4 @@
-package main.model;
+package model;
 
 /**
  * A user of the application
@@ -82,7 +82,7 @@ public class User {
 
     /**
      * Sets the user's ID
-     * @param userId The user's new ID
+     * @param userID The user's new ID
      */
     public void setUserID(String userID) {
         this.userID = userID;

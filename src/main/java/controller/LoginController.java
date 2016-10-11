@@ -1,4 +1,4 @@
-package main.controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,8 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import main.model.User;
-import main.model.allUsers;
+import model.User;
+import model.allUsers;
 
 /**
  * The controller for logins

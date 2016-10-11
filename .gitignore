@@ -1,5 +1,9 @@
 # Compiled stuff
 out/*
+build
 
 # Ignore files that change commonly
 .idea/workspace.xml
+
+# Gradle build files
+.gradle
