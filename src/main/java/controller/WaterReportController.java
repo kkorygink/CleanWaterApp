@@ -1,10 +1,10 @@
-package main.controller;
+package main.java.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import main.model.*;
+import main.java.model.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -90,7 +90,7 @@ public class WaterReportController {
     public void initManager(final LoginManager loginManager) {
         submitButton.setOnAction((ActionEvent event) -> {
 
-            if(locWater.getText() != null && condWater.getValue() != null && typeWater.getValue() != null ) {
+            if(!locWater.getText().equals("") && condWater.getValue() != null && typeWater.getValue() != null ) {
                 WaterReport report = WaterReportList.newReport(user);
                 report.setTime(currTime);
                 report.setDate(currDate);

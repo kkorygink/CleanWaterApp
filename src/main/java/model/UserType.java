@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 
 /**
  * User types (User, Worker, Admin, etc.)

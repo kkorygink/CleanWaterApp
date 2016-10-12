@@ -1,4 +1,4 @@
-package controller;
+package main.java.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,8 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import model.User;
-import model.AllUsers;
+import main.java.model.User;
+import main.java.model.AllUsers;
 
 /**
  * The controller for user profiles

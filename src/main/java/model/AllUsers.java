@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 
 /**
  * This class is used to implement the RegisterController
