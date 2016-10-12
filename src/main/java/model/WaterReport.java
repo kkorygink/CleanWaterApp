@@ -15,7 +15,7 @@ public class WaterReport {
     /**
      * location of water
      */
-    private String location;
+    private double[] location;
     /**
      * water type
      */
@@ -62,8 +62,12 @@ public class WaterReport {
         return reportNumber;
     }
 
-    public String getLocation() {
+    public double[] getLocation() {
         return location;
+    }
+
+    public String getLocationStr() {
+        return ("(" + location[0] + ", " + location[1] + ")");
     }
 
     public WaterType getWaterType() {
@@ -82,7 +86,7 @@ public class WaterReport {
         return date;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(double[] location) {
         this.location = location;
     }
 

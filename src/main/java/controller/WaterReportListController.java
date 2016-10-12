@@ -86,7 +86,7 @@ public class WaterReportListController {
         userCol.setCellValueFactory(
                 new PropertyValueFactory<WaterReport, String>("username"));
         locCol.setCellValueFactory(
-                new PropertyValueFactory<WaterReport, String>("location"));
+                new PropertyValueFactory<WaterReport, String>("locationStr"));
         typeCol.setCellValueFactory(
                 new PropertyValueFactory<WaterReport, WaterType>("waterType"));
         condCol.setCellValueFactory(
