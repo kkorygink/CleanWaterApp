@@ -148,4 +148,19 @@ public class LoginManager {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void showWaterReportList(User user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/reportList.fxml"));
+            primaryStage.setTitle("Water App - Water Report List");
+            primaryStage.setScene(new Scene(loader.load(), 500, 500));
+            primaryStage.show();
+
+            WaterReportListController controller = loader.getController();
+            controller.initPage(user);
+            controller.initManager(this);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

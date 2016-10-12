@@ -71,5 +71,9 @@ public class MainController {
         submitReportButton.setOnAction((ActionEvent event) -> {
             loginManager.showWaterReport(user);
         });
+
+        reportListButton.setOnAction((ActionEvent event) -> {
+            loginManager.showWaterReportList(user);
+        });
     }
 }
