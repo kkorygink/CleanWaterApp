@@ -2,8 +2,19 @@
 out/*
 build
 
-# Ignore files that change commonly
-.idea/workspace.xml
+# IntelliJ
+.idea
+IntelliLang.xml
+*.iml
+databaseSettings.xml
+debugger.xml
+editor.xml
+file.template.settings.xml
+filetypes.xml
+other.xml
+scala.xml
+web-browsers.xml
+
 
 # Gradle build files
 .gradle
