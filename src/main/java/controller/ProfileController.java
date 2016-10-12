@@ -1,11 +1,16 @@
-package main.controller;
+package main.java.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import main.model.User;
-import main.model.allUsers;
+
+import main.java.model.User;
+import main.java.model.AllUsers;
 
 /**
  * The controller for user profiles
@@ -16,13 +21,13 @@ public class ProfileController {
      * The username
      */
     @FXML
-    Text usernameText;
+    private Text usernameText;
 
     /**
      * The type of account (user, worker, admin, etc)
      */
     @FXML
-    Text accountTypeText;
+    private Text accountTypeText;
 
     /**
      * The user's name
@@ -58,13 +63,13 @@ public class ProfileController {
      * Save's the user's profile
      */
     @FXML
-    Button saveButton;
+    private Button saveButton;
 
     /**
      * Cancels editing the user's profile
      */
     @FXML
-    Button cancelButton;
+    private Button cancelButton;
 
     /**
      * The user
@@ -90,31 +95,36 @@ public class ProfileController {
     /**
      * Initializes the LoginManager and verifies that the user's
      * password is correct.
-     * @param loginManager
+     * @param loginManager Manages the login
      */
     public void initManager(final LoginManager loginManager) {
-        saveButton.setOnAction((ActionEvent event) -> {
-            if(name.getText() != null || email.getText() != null || !emailTaken() ) {
-                user.setEmail(email.getText());
-                user.setName(name.getText());
-                user.setAddress(address.getText());
-
-            }
-            if (emailTaken()) {
-                showError("Email is already in use");
-                return;
-            }
-            if (!password.getText().equals(confirmPassword.getText()) || password.getText().replaceAll("\\s+","").isEmpty()) {
-                showError("The passwords don't match, please input a valid password");
-                return;
-            } else {
-                user.setPassword(password.getText());
-            }
-            loginManager.showMain(user);
-        });
-        cancelButton.setOnAction((ActionEvent event) -> {
-            loginManager.showMain(user);
-        });
+        saveButton.setOnAction(
+            (ActionEvent event) -> {
+                if (name.getText() != null
+                    || email.getText() != null
+                    || !emailTaken()) {
+                    user.setEmail(email.getText());
+                    user.setName(name.getText());
+                    user.setAddress(address.getText());
+                }
+                if (emailTaken()) {
+                    showError("Email is already in use");
+                    return;
+                }
+                if (!password.getText().equals(confirmPassword.getText())
+                    || password.getText().replaceAll("\\s+", "").isEmpty()) {
+                    showError("The passwords don't match,"
+                        + " please input a valid password");
+                    return;
+                } else {
+                    user.setPassword(password.getText());
+                }
+                loginManager.showMain(user);
+            });
+        cancelButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.showMain(user);
+            });
     }
 
     /**
@@ -122,15 +132,14 @@ public class ProfileController {
      * @return true if the email is taken
      */
     private boolean emailTaken() {
-        User[] x = allUsers.getUsers();
-        if(!user.getEmail().equals(email.getText())) {
-            for (int i = 0; i < allUsers.getSize(); i++) {
+        User[] x = AllUsers.getUsers();
+        if (!user.getEmail().equals(email.getText())) {
+            for (int i = 0; i < AllUsers.getSize(); i++) {
                 if (x[i].getEmail().equals(email.getText())) {
                     return true;
                 }
             }
-        }
-        else {
+        } else {
             return false;
         }
 
@@ -142,7 +151,7 @@ public class ProfileController {
      * @param x The string to display to the user
      */
     private void showError(String x) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(x);

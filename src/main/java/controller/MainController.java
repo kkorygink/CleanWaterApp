@@ -1,10 +1,10 @@
-package main.controller;
+package main.java.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-import main.model.User;
+import main.java.model.User;
 
 /**
  * The main application controller
@@ -20,19 +20,31 @@ public class MainController {
      * The name of the user
      */
     @FXML
-    Text nameText;
+    private Text nameText;
 
     /**
      * Logs the user out
      */
     @FXML
-    Button logoutButton;
+    private Button logoutButton;
 
     /**
      * Shows the user's profile
      */
     @FXML
-    Button profileButton;
+    private Button profileButton;
+
+    /**
+     * Shows water report form
+     */
+    @FXML
+    private Button submitReportButton;
+
+    /**
+     * Shows List of Water Reports
+     */
+    @FXML
+    private Button reportListButton;
 
     /**
      * Initializes the user's data
@@ -49,11 +61,19 @@ public class MainController {
      */
     public void initManager(final LoginManager loginManager) {
         profileButton.setOnAction((ActionEvent event) -> {
-            loginManager.showProfile(user);
-        });
+                loginManager.showProfile(user);
+            });
 
         logoutButton.setOnAction((ActionEvent event) -> {
-            loginManager.logout();
-        });
+                loginManager.logout();
+            });
+
+        submitReportButton.setOnAction((ActionEvent event) -> {
+                loginManager.showWaterReport(user);
+            });
+
+        reportListButton.setOnAction((ActionEvent event) -> {
+                loginManager.showWaterReportList(user);
+            });
     }
 }

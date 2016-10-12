@@ -1,4 +1,4 @@
-package main.model;
+package main.java.model;
 
 /**
  * A user of the application
@@ -64,12 +64,15 @@ public class User {
      * @param password The user's password
      * @param accountType The user's account type or UserType
      */
-    public User(String name, String userID, String password, UserType accountType) {
+    public User(
+        String name,
+        String userID,
+        String password,
+        UserType accountType) {
         this.name = name;
         this.userID = userID;
         this.password = password;
         this.accountType = accountType;
-
     }
 
     /**
@@ -82,7 +85,7 @@ public class User {
 
     /**
      * Sets the user's ID
-     * @param userId The user's new ID
+     * @param userID The user's new ID
      */
     public void setUserID(String userID) {
         this.userID = userID;
