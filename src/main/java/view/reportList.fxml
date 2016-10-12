@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="main.java.controller.WaterReportListController">
+<VBox prefHeight="546.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.WaterReportListController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" text="Report List">
          <font>
@@ -19,17 +19,17 @@
             <Insets />
          </VBox.margin>
       </Label>
-      <ScrollPane>
+      <ScrollPane fitToHeight="true" fitToWidth="true">
          <content>
             <TableView fx:id="waterReportTable">
               <columns>
-                <TableColumn fx:id="reportNumberCol" prefWidth="75.0" text="no." />
-                <TableColumn fx:id="userCol" prefWidth="75.0" text="User" />
-                  <TableColumn fx:id="LocCol" prefWidth="75.0" text="Location" />
-                  <TableColumn fx:id="TypeCol" prefWidth="75.0" text="Type" />
-                  <TableColumn fx:id="CondCol" prefWidth="75.0" text="Condition" />
-                  <TableColumn fx:id="DateCol" prefWidth="75.0" text="Date" />
-                  <TableColumn fx:id="TimeCol" prefWidth="75.0" text="Time" />
+                <TableColumn fx:id="reportNumberCol" prefWidth="90.0" text="no." />
+                <TableColumn fx:id="userCol" prefWidth="90.0" text="User" />
+                  <TableColumn fx:id="LocCol" prefWidth="90.0" text="Location" />
+                  <TableColumn fx:id="TypeCol" prefWidth="90.0" text="Type" />
+                  <TableColumn fx:id="CondCol" prefWidth="90.0" text="Condition" />
+                  <TableColumn fx:id="DateCol" prefWidth="90.0" text="Date" />
+                  <TableColumn fx:id="TimeCol" prefWidth="90.0" text="Time" />
               </columns>
             </TableView>
          </content>

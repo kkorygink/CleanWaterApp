@@ -153,7 +153,7 @@ public class LoginManager {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/reportList.fxml"));
             primaryStage.setTitle("Water App - Water Report List");
-            primaryStage.setScene(new Scene(loader.load(), 500, 500));
+            primaryStage.setScene(new Scene(loader.load(), 540, 500));
             primaryStage.show();
 
             WaterReportListController controller = loader.getController();
