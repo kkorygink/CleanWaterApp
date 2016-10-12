@@ -22,13 +22,20 @@ public class WaterReport {
 
     private int reportNumber;
 
+    private String username;
+
     public WaterReport(User user) {
         this.user = user;
+        username = user.getUserID();
     }
 
 
     public User getUser() {
         return user;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public int getReportNumber() {

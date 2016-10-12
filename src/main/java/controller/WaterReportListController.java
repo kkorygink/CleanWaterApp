@@ -55,6 +55,12 @@ public class WaterReportListController {
         ObservableList<WaterReport> waterReport = FXCollections.observableArrayList();
         waterReport.setAll(WaterReportList.getReports());
         reportNumberCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Integer>("reportNumber"));
+        userCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("username"));
+        LocCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("location"));
+        TypeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, WaterType>("waterType"));
+        CondCol.setCellValueFactory(new PropertyValueFactory<WaterReport, WaterCond>("waterCond"));
+        DateCol.setCellValueFactory(new PropertyValueFactory<WaterReport, LocalDate>("date"));
+        TimeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, LocalTime>("time"));
         waterReportTable.setItems(waterReport);
 
     }
