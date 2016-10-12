@@ -118,33 +118,31 @@ public class WaterReportController {
      */
     public void initManager(final LoginManager loginManager) {
         submitButton.setOnAction((ActionEvent event) -> {
-                Double latit = null;
-                Double longit = null;
-                try {
-                    latit = Double.parseDouble(latitude.getText());
-                    longit = Double.parseDouble(longitude.getText());
-                } catch (NumberFormatException e) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Water Report");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Latitude and Longitude must be "
-                            + "numeric");
-                    alert.showAndWait();
-                }
-                if (latit != null && longit != null
+
+                if (!latitude.getText().equals("")
+                        && !longitude.getText().equals("")
                         && condWater.getValue() != null
                         && typeWater.getValue() != null) {
-                    WaterReport report = WaterReportList.newReport(user);
-                    report.setTime(currTime);
-                    report.setDate(currDate);
-                    double[] loc = new double[2];
-                    loc[0] = Double.parseDouble(latitude.getText());
-                    loc[1] = Double.parseDouble(longitude.getText());
-                    report.setLocation(loc);
-                    report.setWaterCond(condWater.getValue());
-                    report.setWaterType(typeWater.getValue());
-                    loginManager.showMain(user);
-                } else if (latit != null && longit != null) {
+                    try {
+                        double [] loc = new double[2];
+                        loc[0] = Double.parseDouble(latitude.getText());
+                        loc[1] = Double.parseDouble(longitude.getText());
+                        WaterReport report = WaterReportList.newReport(user);
+                        report.setTime(currTime);
+                        report.setDate(currDate);
+                        report.setLocation(loc);
+                        report.setWaterCond(condWater.getValue());
+                        report.setWaterType(typeWater.getValue());
+                        loginManager.showMain(user);
+                    } catch (NumberFormatException e) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Water Report");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Latitude and Longitude must be "
+                                + "numeric");
+                        alert.showAndWait();
+                    }
+                } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Water Report");
                     alert.setHeaderText(null);
