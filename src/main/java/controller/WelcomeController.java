@@ -1,4 +1,4 @@
-package main.controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +12,13 @@ public class WelcomeController {
      * Brings the user to the login screen
      */
     @FXML
-    Button loginButton;
+    private Button loginButton;
 
     /**
      * Brings the user to the registration screen
      */
     @FXML
-    Button registerButton;
+    private Button registerButton;
 
     /**
      * Prepares to log in by either showing the login
@@ -26,12 +26,14 @@ public class WelcomeController {
      * @param loginManager The login manager
      */
     public void initManager(final LoginManager loginManager) {
-        loginButton.setOnAction((ActionEvent event) -> {
-            loginManager.showLogin();
-        });
+        loginButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.showLogin();
+            });
 
-        registerButton.setOnAction((ActionEvent event) -> {
-            loginManager.showRegister();
-        });
+        registerButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.showRegister();
+            });
     }
 }
