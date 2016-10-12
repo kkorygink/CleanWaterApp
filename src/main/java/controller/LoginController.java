@@ -6,8 +6,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import model.User;
-import model.allUsers;
+import model.AllUsers;
 
 /**
  * The controller for logins
@@ -51,18 +52,22 @@ public class LoginController {
      * @param loginManager The LoginManager
      */
     public void initManager(final LoginManager loginManager) {
-        loginButton.setOnAction((ActionEvent event) -> {
-            User user1 = authorize();
-            if (user1 != null) {
-                loginManager.authenticated(user1);
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Invalid username and password").show();
-            }
-        });
+        loginButton.setOnAction(
+            (ActionEvent event) -> {
+                User user1 = authorize();
+                if (user1 != null) {
+                    loginManager.authenticated(user1);
+                } else {
+                    new Alert(
+                        Alert.AlertType.ERROR,
+                        "Invalid username and password").show();
+                }
+            });
 
-        cancelButton.setOnAction((ActionEvent event) -> {
-            loginManager.showWelcome();
-        });
+        cancelButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.showWelcome();
+            });
     }
 
     /**
@@ -70,8 +75,9 @@ public class LoginController {
      * @return The authorized user. Returns null upon failure.
      */
     private User authorize() {
-        for (User i : allUsers.getUsers()) {
-            if (user.getText().equals(i.getUserID()) && password.getText().equals(i.getPassword())) {
+        for (User i : AllUsers.getUsers()) {
+            if (user.getText().equals(i.getUserID())
+                && password.getText().equals(i.getPassword())) {
                 return i;
             } else {
                 return null;

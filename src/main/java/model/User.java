@@ -64,12 +64,15 @@ public class User {
      * @param password The user's password
      * @param accountType The user's account type or UserType
      */
-    public User(String name, String userID, String password, UserType accountType) {
+    public User(
+        String name,
+        String userID,
+        String password,
+        UserType accountType) {
         this.name = name;
         this.userID = userID;
         this.password = password;
         this.accountType = accountType;
-
     }
 
     /**

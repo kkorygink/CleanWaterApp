@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+
 import model.User;
 
 /**
@@ -20,19 +21,19 @@ public class MainController {
      * The name of the user
      */
     @FXML
-    Text nameText;
+    private Text nameText;
 
     /**
      * Logs the user out
      */
     @FXML
-    Button logoutButton;
+    private Button logoutButton;
 
     /**
      * Shows the user's profile
      */
     @FXML
-    Button profileButton;
+    private Button profileButton;
 
     /**
      * Initializes the user's data
@@ -48,12 +49,14 @@ public class MainController {
      * @param loginManager The login manager
      */
     public void initManager(final LoginManager loginManager) {
-        profileButton.setOnAction((ActionEvent event) -> {
-            loginManager.showProfile(user);
-        });
+        profileButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.showProfile(user);
+            });
 
-        logoutButton.setOnAction((ActionEvent event) -> {
-            loginManager.logout();
-        });
+        logoutButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.logout();
+            });
     }
 }

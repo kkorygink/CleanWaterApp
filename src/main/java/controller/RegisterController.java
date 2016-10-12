@@ -1,13 +1,19 @@
 package controller;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import model.UserType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import model.allUsers;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
+import model.UserType;
+import model.AllUsers;
 import model.User;
-import java.io.*;
 
 
 /**
@@ -55,13 +61,13 @@ public class RegisterController {
      * Completes user registration
      */
     @FXML
-    Button registerButton;
+    private Button registerButton;
 
     /**
      * Cancels user registration
      */
     @FXML
-    Button cancelButton;
+    private Button cancelButton;
 
     /**
      * Initializes the UI components
@@ -75,57 +81,61 @@ public class RegisterController {
     /**
      * The file containing all the users' data
      */
-    File fileName = new File("./src/main/Data/user.ser");
+    private File fileName = new File("./src/main/Data/user.ser");
 
     /**
      * Initializes the login manager and attempt to register the user
      * @param loginManager The login manager
      */
     public void initManager(final LoginManager loginManager) {
-        registerButton.setOnAction((ActionEvent event) -> {
+        registerButton.setOnAction(
+            (ActionEvent event) -> {
+                String passwordText = password.getText();
+                String confirmedPasswordText = confirmPassword.getText();
+                if (username.getText() == null
+                    || name.getText() == null
+                    || email.getText() == null
+                    || passwordText.replaceAll("\\s+", "").isEmpty()
+                    || confirmedPasswordText.replaceAll("\\s+", "").isEmpty()
+                    || accountType.getSelectionModel().isEmpty()) {
+                    showError("All fields must be filled in");
+                    return;
+                }
 
+                if (!password.getText().equals(confirmPassword.getText())) {
+                    showError("The passwords don't match");
+                    return;
+                }
 
-            if (username.getText() == null || name.getText() == null || email.getText() == null
-                    || password.getText().replaceAll("\\s+","").isEmpty()  || confirmPassword.getText().replaceAll("\\s+","").isEmpty() ||
-                    accountType.getSelectionModel().isEmpty()) {
+                if (!idTaken() && !emailTaken()) {
+                    User newUser = new User(
+                        name.getText(),
+                        username.getText(),
+                        password.getText());
+                    newUser.setEmail(email.getText());
+                    newUser.setAccountType(
+                        accountType.getSelectionModel().getSelectedItem());
+                    AllUsers.addUser(newUser);
+                    loginManager.showMain(newUser);
+                } else {
+                    showError("The username or email is already taken");
+                    return;
+                }
+            });
 
-                showError("All fields must be filled in");
-                return;
-            }
-
-            if (!password.getText().equals(confirmPassword.getText())) {
-
-                showError("The passwords don't match");
-                return;
-            }
-
-            if (!IDTaken() && !emailTaken()) {
-                User newUser = new User(name.getText(), username.getText(), password.getText());
-                newUser.setEmail(email.getText());
-                newUser.setAccountType(accountType.getSelectionModel().getSelectedItem());
-                allUsers.addUser(newUser);
-                loginManager.showMain(newUser);
-            }
-            else {
-                showError("The username or email is already taken");
-                return;
-
-            }
-
-        });
-
-        cancelButton.setOnAction((ActionEvent event) -> {
-            loginManager.showWelcome();
-        });
+        cancelButton.setOnAction(
+            (ActionEvent event) -> {
+                loginManager.showWelcome();
+            });
     }
 
     /**
      * Checks if the ID is taken
      * @return true if it's taken
      */
-    private boolean IDTaken() {
-        User [] x = allUsers.getUsers();
-        for (int i = 0; i < allUsers.getSize(); i++) {
+    private boolean idTaken() {
+        User [] x = AllUsers.getUsers();
+        for (int i = 0; i < AllUsers.getSize(); i++) {
             if (x[i].getUserID().equals(username.getText())) {
                 return true;
             }
@@ -138,8 +148,8 @@ public class RegisterController {
      * @return true if it's taken
      */
     private boolean emailTaken() {
-        User[] x = allUsers.getUsers();
-        for (int i = 0; i < allUsers.getSize(); i++) {
+        User[] x = AllUsers.getUsers();
+        for (int i = 0; i < AllUsers.getSize(); i++) {
             if (x[i].getEmail().equals(email.getText())) {
                 return true;
             }
