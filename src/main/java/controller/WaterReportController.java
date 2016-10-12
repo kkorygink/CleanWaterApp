@@ -2,9 +2,17 @@ package main.java.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import main.java.model.*;
+import javafx.scene.control.Button;
+
+import main.java.model.User;
+import main.java.model.WaterReport;
+import main.java.model.WaterReportList;
+import main.java.model.WaterType;
+import main.java.model.WaterCond;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -70,45 +78,61 @@ public class WaterReportController {
      */
     @FXML
     private Button cancelButton;
-
+    /**
+     * Holds the time information from when opening the page
+     */
     private LocalTime currTime;
     private LocalDate currDate;
+
+    /**
+     * Initializes comboboxes
+     */
     @FXML
     public void initialize() {
         typeWater.getItems().setAll(WaterType.values());
         condWater.getItems().setAll(WaterCond.values());
     }
+
+    /**
+     * Initializes the time and user information
+     * @param user user accessing the page
+     */
     public void initPage(User user) {
         this.user = user;
         nameText.setText(user.getName());
         currTime = LocalTime.now();
         currDate = LocalDate.now();
-        reportTime.setText(currTime.truncatedTo(MINUTES).toString() +  " on " + currDate.toString());
-        reportNumber.setText((WaterReportList.getNumReports()+1) + "");
+        reportTime.setText(currTime.truncatedTo(MINUTES).toString() + " on "
+                + currDate.toString());
+        reportNumber.setText((WaterReportList.getNumReports() + 1) + "");
     }
 
+    /**
+     * Initializes the button functions
+     * @param loginManager manager for the page
+     */
     public void initManager(final LoginManager loginManager) {
         submitButton.setOnAction((ActionEvent event) -> {
-
-            if(!locWater.getText().equals("") && condWater.getValue() != null && typeWater.getValue() != null ) {
-                WaterReport report = WaterReportList.newReport(user);
-                report.setTime(currTime);
-                report.setDate(currDate);
-                report.setLocation(locWater.getText());
-                report.setWaterCond(condWater.getValue());
-                report.setWaterType(typeWater.getValue());
-                loginManager.showMain(user);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Water Report");
-                alert.setHeaderText(null);
-                alert.setContentText("Fill out the full Report");
-                alert.showAndWait();
-            }
-        });
+                if (!locWater.getText().equals("") && condWater.getValue()
+                        != null && typeWater.getValue() != null) {
+                    WaterReport report = WaterReportList.newReport(user);
+                    report.setTime(currTime);
+                    report.setDate(currDate);
+                    report.setLocation(locWater.getText());
+                    report.setWaterCond(condWater.getValue());
+                    report.setWaterType(typeWater.getValue());
+                    loginManager.showMain(user);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Water Report");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Fill out the full Report");
+                    alert.showAndWait();
+                }
+            });
         cancelButton.setOnAction((ActionEvent event) -> {
-            loginManager.showMain(user);
-        });
+                loginManager.showMain(user);
+            });
     }
 
 

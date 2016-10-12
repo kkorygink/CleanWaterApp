@@ -25,11 +25,11 @@
               <columns>
                 <TableColumn fx:id="reportNumberCol" prefWidth="90.0" text="no." />
                 <TableColumn fx:id="userCol" prefWidth="90.0" text="User" />
-                  <TableColumn fx:id="LocCol" prefWidth="90.0" text="Location" />
-                  <TableColumn fx:id="TypeCol" prefWidth="90.0" text="Type" />
-                  <TableColumn fx:id="CondCol" prefWidth="90.0" text="Condition" />
-                  <TableColumn fx:id="DateCol" prefWidth="90.0" text="Date" />
-                  <TableColumn fx:id="TimeCol" prefWidth="90.0" text="Time" />
+                  <TableColumn fx:id="locCol" prefWidth="90.0" text="Location" />
+                  <TableColumn fx:id="typeCol" prefWidth="90.0" text="Type" />
+                  <TableColumn fx:id="condCol" prefWidth="90.0" text="Condition" />
+                  <TableColumn fx:id="dateCol" prefWidth="90.0" text="Date" />
+                  <TableColumn fx:id="timeCol" prefWidth="90.0" text="Time" />
               </columns>
             </TableView>
          </content>

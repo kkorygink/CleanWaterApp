@@ -8,27 +8,47 @@ import java.time.LocalTime;
  */
 public class WaterReport {
 
+    /**
+     * User who made the report
+     */
     private User user;
-
+    /**
+     * location of water
+     */
     private String location;
-
+    /**
+     * water type
+     */
     private WaterType waterType;
-
+    /**
+     * Water condition
+     */
     private WaterCond waterCond;
-
+    /**
+     * Date of report
+     */
     private LocalDate date;
-
+    /**
+     * Time of report
+     */
     private LocalTime time;
-
+    /**
+     * Report number
+     */
     private int reportNumber;
-
+    /**
+     * User's username
+     */
     private String username;
 
+    /**
+     * sets user
+     * @param user user who made report
+     */
     public WaterReport(User user) {
         this.user = user;
         username = user.getUserID();
     }
-
 
     public User getUser() {
         return user;

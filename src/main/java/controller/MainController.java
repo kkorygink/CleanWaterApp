@@ -20,31 +20,31 @@ public class MainController {
      * The name of the user
      */
     @FXML
-    Text nameText;
+    private Text nameText;
 
     /**
      * Logs the user out
      */
     @FXML
-    Button logoutButton;
+    private Button logoutButton;
 
     /**
      * Shows the user's profile
      */
     @FXML
-    Button profileButton;
+    private Button profileButton;
 
     /**
      * Shows water report form
      */
     @FXML
-    Button submitReportButton;
+    private Button submitReportButton;
 
     /**
      * Shows List of Water Reports
      */
     @FXML
-    Button reportListButton;
+    private Button reportListButton;
 
     /**
      * Initializes the user's data
@@ -61,19 +61,19 @@ public class MainController {
      */
     public void initManager(final LoginManager loginManager) {
         profileButton.setOnAction((ActionEvent event) -> {
-            loginManager.showProfile(user);
-        });
+                loginManager.showProfile(user);
+            });
 
         logoutButton.setOnAction((ActionEvent event) -> {
-            loginManager.logout();
-        });
+                loginManager.logout();
+            });
 
         submitReportButton.setOnAction((ActionEvent event) -> {
-            loginManager.showWaterReport(user);
-        });
+                loginManager.showWaterReport(user);
+            });
 
         reportListButton.setOnAction((ActionEvent event) -> {
-            loginManager.showWaterReportList(user);
-        });
+                loginManager.showWaterReportList(user);
+            });
     }
 }
