@@ -106,6 +106,9 @@ public class WaterReportController {
                 alert.showAndWait();
             }
         });
+        cancelButton.setOnAction((ActionEvent event) -> {
+            loginManager.showMain(user);
+        });
     }
 
 
