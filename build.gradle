@@ -1,7 +1,9 @@
 apply plugin: "java"
+apply plugin: "application"
 
 version = "1.0"
 description = "Diseased Cows' CS 2340 Project Build File"
+mainClassName = "Main"
 
 defaultTasks "buildFxApp"
 
