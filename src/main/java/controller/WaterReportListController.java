@@ -1,4 +1,4 @@
-package main.java.controller;
+package controller;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,11 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import main.java.model.User;
-import main.java.model.WaterReport;
-import main.java.model.WaterReportList;
-import main.java.model.WaterType;
-import main.java.model.WaterCond;
+import model.User;
+import model.WaterReport;
+import model.WaterReportList;
+import model.WaterType;
+import model.WaterCond;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

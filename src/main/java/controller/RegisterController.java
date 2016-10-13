@@ -1,4 +1,4 @@
-package main.java.controller;
+package controller;
 
 import java.io.File;
 
@@ -11,9 +11,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import main.java.model.UserType;
-import main.java.model.AllUsers;
-import main.java.model.User;
+import model.UserType;
+import model.AllUsers;
+import model.User;
 
 
 /**
@@ -49,7 +49,7 @@ public class RegisterController {
      * Type of account (user, worker, admin, etc.)
      */
     @FXML
-    private ComboBox<main.java.model.UserType> accountType;
+    private ComboBox<UserType> accountType;
 
     /**
      * Confirmation of the user's password

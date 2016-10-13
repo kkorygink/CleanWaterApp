@@ -1,13 +1,14 @@
-package main.java.controller;
+package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.java.model.User;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import model.User;
 
 /**
  * Login manager which takes care of switching between the application, the

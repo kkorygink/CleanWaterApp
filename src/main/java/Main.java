@@ -1,6 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main.java.controller.LoginManager;
+import controller.LoginManager;
 
 /**
  * The main class and entry point of the application.

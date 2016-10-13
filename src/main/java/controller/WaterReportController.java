@@ -1,4 +1,4 @@
-package main.java.controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,11 +8,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 
-import main.java.model.User;
-import main.java.model.WaterReport;
-import main.java.model.WaterReportList;
-import main.java.model.WaterType;
-import main.java.model.WaterCond;
+import model.User;
+import model.WaterReport;
+import model.WaterReportList;
+import model.WaterType;
+import model.WaterCond;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

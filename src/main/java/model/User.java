@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 /**
  * A user of the application

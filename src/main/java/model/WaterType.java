@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 /**
  * Created by Matt on 10/11/2016.
